@@ -31,5 +31,23 @@
         </section>
         <button>Add Item</button>
     </form>
+    {% for item in allItems %}
+    <form action='purchase/' method='post'>
+        {% csrf_token %}
+        <h3>{{item.itemName}}</h3>
+        <section>
+            <input type='text' name='id' value='{{item.id}}'>
+            {{item.price}}
+        </section>
+        <section>
+            <select name='quantity'>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+            </select>
+        </section>
+        <button>Add to Cart</button>
+    </form>
+    {% endfor %}
 </body>
 </html>
